@@ -17,6 +17,6 @@ export const centralDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME_CENTRAL,
-  entities: [CentroMedico, Medico, Especialidad, Empleado],
+  entities: [CentroMedico, Especialidad, Medico, Empleado],
   synchronize: false,
 });
