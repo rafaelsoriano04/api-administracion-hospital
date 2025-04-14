@@ -11,10 +11,11 @@ import { centro2DataSource } from './data-source/centro2DataSource';
 
 // Rutas
 import centroMedicoRoutes from './routes/centroMedicoRoutes';
-
+import medicoRoutes from './routes/medicoRoutes';
+import empleadoRoutes from './routes/empleadoRoutes';
 import especialidadRoutes from './routes/especialidadRoutes';
 
-// (Y así para medicoRoutes, especialidadRoutes, empleadoRoutes, etc.)
+
 
 dotenv.config();
 
@@ -37,9 +38,9 @@ async function startServer() {
 
     // Rutas
     app.use('/api/centros-medicos', centroMedicoRoutes);
-    // app.use('/api/medicos', medicoRoutes);
+     app.use('/api/medicos', medicoRoutes);
     app.use('/api/especialidades', especialidadRoutes);
-    // app.use('/api/empleados', empleadoRoutes);
+     app.use('/api/empleados', empleadoRoutes);
 
     // Levantamos el servidor
     const PORT = process.env.PORT || 3000;
