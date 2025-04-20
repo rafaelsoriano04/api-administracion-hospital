@@ -15,6 +15,8 @@ import centroMedicoRoutes from './routes/centroMedicoRoutes';
 import medicoRoutes from './routes/medicoRoutes';
 import empleadoRoutes from './routes/empleadoRoutes';
 import especialidadRoutes from './routes/especialidadRoutes';
+import pacienteRoutes from './routes/pacienteRoutes';
+import consultaMedicaRoutes from './routes/consultaMedicaRoutes';
 
 dotenv.config();
 
@@ -61,6 +63,8 @@ async function startServer() {
     app.use('/api/medicos', medicoRoutes);
     app.use('/api/especialidades', especialidadRoutes);
     app.use('/api/empleados', empleadoRoutes);
+    app.use('/api/pacientes', pacienteRoutes); 
+    app.use('/api/consultas-medicas', consultaMedicaRoutes);
 
 
     const PORT = process.env.PORT || 3001;

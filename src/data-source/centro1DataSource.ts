@@ -3,10 +3,10 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
 import { CentroMedico } from '../entities/CentroMedico';
+import { ConsultaMedica } from '../entities/ConsultaMedica';
+import { Paciente } from '../entities/Paciente';
 import { Medico } from '../entities/Medico';
 import { Especialidad } from '../entities/Especialidad';
-import { Empleado } from '../entities/Empleado';
-import { ConsultaMedica } from '../entities/ConsultaMedica';
 
 dotenv.config();
 
@@ -17,6 +17,6 @@ export const centro1DataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME_CENTRO1,
-  entities: [ConsultaMedica],
+  entities: [ConsultaMedica, Paciente, CentroMedico, Medico, Especialidad],
   synchronize: false,
 });
