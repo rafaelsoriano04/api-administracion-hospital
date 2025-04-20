@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column ,ManyToOne,JoinColumn} from 'typeorm';
+import { CentroMedico } from './CentroMedico';
 
 @Entity({ name: 'empleado' })
 export class Empleado {
@@ -12,5 +13,11 @@ export class Empleado {
   cargo!: string;
 
   @Column({ type: 'int' })
-  centro_medico_id!: number;  // Si quieres relacionar con CentroMedico con un FK real, usar Relación
+  centro_medico_id!: number;  
+
+  @ManyToOne(() => CentroMedico, (centroMedico) => centroMedico.id, {
+    
+  })
+  @JoinColumn({ name: 'centro_medico_id' }) 
+  centroMedico!: CentroMedico;
 }
