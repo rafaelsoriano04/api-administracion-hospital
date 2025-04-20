@@ -3,6 +3,7 @@ import { centralDataSource } from '../data-source/centralDataSource';
 import { Empleado } from '../entities/Empleado';
 
 export class EmpleadoController {
+    
     static getAll: RequestHandler = async (req, res) => {
         try {
             const repo = centralDataSource.getRepository(Empleado);

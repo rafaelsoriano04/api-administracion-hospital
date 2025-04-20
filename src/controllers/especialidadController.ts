@@ -29,14 +29,24 @@ export class EspecialidadController {
     };
 
     static create: RequestHandler = async (req, res) => {
+        console.log("Solicitud recibida en create - Cuerpo de la solicitud:", req.body);
         const { nombre } = req.body;
+        if (!nombre || typeof nombre !== 'string' || nombre.trim() === '') {
+            console.log("Error: Nombre no proporcionado o inválido");
+            res.status(400).json({ error: 'El campo nombre es obligatorio y debe ser una cadena no vacía' });
+            return;
+        }
         try {
             const repo = centralDataSource.getRepository(Especialidad);
+            console.log("Creando especialidad con datos:", { nombre });
             const especialidad = repo.create({ nombre });
+            console.log("Especialidad creada (antes de guardar):", especialidad);
             const result = await repo.save(especialidad);
+            console.log("Especialidad guardada exitosamente:", result);
             res.status(201).json(result);
         } catch (err) {
-            res.status(500).json({ error: 'Error al crear especialidad' });
+            console.error("Error al crear especialidad:", err);
+            res.status(500).json({ error: 'Error al crear especialidad', details: err.message });
         }
     };
 
