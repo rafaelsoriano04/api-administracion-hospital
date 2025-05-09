@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import { centro1DataSource } from "../data-source/centro1DataSource";
 import { centro2DataSource } from "../data-source/centro2DataSource";
+import { centro3DataSource } from "../data-source/centro3DataSource";
 import { Paciente } from "../entities/Paciente";
 import { ConsultaMedica } from "../entities/ConsultaMedica";
 
@@ -12,8 +13,11 @@ export class ConsultaMedicaController {
         
                 const repo2 = centro2DataSource.getRepository(ConsultaMedica);
                 const consultas2 = await repo2.find();
+
+                const repo3 = centro3DataSource.getRepository(ConsultaMedica);
+                const consultas3 = await repo3.find();
         
-                const todasLasConsultas = [...consultas1, ...consultas2];
+                const todasLasConsultas = [...consultas1, ...consultas2, ...consultas3];
         
                 res.json(todasLasConsultas);
             } catch (err) {
